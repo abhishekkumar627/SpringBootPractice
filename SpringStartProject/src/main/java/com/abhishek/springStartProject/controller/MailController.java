@@ -1,5 +1,6 @@
 package com.abhishek.springStartProject.controller;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,7 @@ public class MailController {
 	// }
 
 	// Using @Primary Annotation for injection
-	public MailController(MailSender mailSender) {
+	public MailController(@Qualifier("mockMailSender1") MailSender mailSender) {
 		this.mailSender = mailSender;
 	}
 
