@@ -9,8 +9,17 @@ import com.abhishek.springStartProject.service.MailSender;
 @RestController
 public class MailController {
 
+	MailSender mailSender;
+
+	//@Autowired
+	//public void setMailSender(MailSender mock) {
+	//	this.mailSender = mock;
+	//}
+	
 	@Autowired
-	MailSender mailSender ;
+	public MailController(MailSender mockMailSender2) {
+		this.mailSender=mockMailSender2;
+	}
 
 	@RequestMapping("/mail")
 	public String mailSend() {
