@@ -3,6 +3,7 @@ package com.abhishek.springStartProject.service;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
 
 @Configuration
 //@Component
@@ -23,7 +24,7 @@ public class MailConfig {
 	
 	@Bean
 	@ConditionalOnProperty("spring.mail.host")
-	public SMTPMailSender smtpMailSender() {
-		return new SMTPMailSender();
+	public SMTPMailSender smtpMailSender(JavaMailSender javaMailSender) {
+		return new SMTPMailSender(javaMailSender);
 	}
 }

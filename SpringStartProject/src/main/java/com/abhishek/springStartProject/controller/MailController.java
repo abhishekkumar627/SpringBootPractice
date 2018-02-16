@@ -1,6 +1,7 @@
 package com.abhishek.springStartProject.controller;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import javax.mail.MessagingException;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,8 +41,8 @@ public class MailController {
 	}
 	
 	@RequestMapping("/mail")
-	public String mailSend() {
-		mailSender.sendEmail("abhishek.kumar627@gmail.com", "Test email", "This is test body content");
+	public String mailSend() throws MessagingException {
+		mailSender.sendEmail("xdfsdfsdfsdfs@gmail.com", "Test email", "This is test body content");
 		return "Mail Sent";
 	}
 }
