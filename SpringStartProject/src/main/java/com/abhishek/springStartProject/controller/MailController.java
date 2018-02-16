@@ -30,10 +30,15 @@ public class MailController {
 	// }
 
 	// Using @Primary Annotation for injection
-	public MailController(@Qualifier("mockMailSender1") MailSender mailSender) {
+	/*public MailController(@Qualifier("mockMailSender1") MailSender mailSender) {
+		this.mailSender = mailSender;
+	}*/
+
+	//Using profile thus only one bean is there
+	public MailController(MailSender mailSender) {
 		this.mailSender = mailSender;
 	}
-
+	
 	@RequestMapping("/mail")
 	public String mailSend() {
 		mailSender.sendEmail("abhishek.kumar627@gmail.com", "Test email", "This is test body content");
