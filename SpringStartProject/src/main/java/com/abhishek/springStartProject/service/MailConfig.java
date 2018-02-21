@@ -8,6 +8,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 @Configuration
 //@Component
 public class MailConfig {
+	
+	@Bean
+	public DemoBean demoBean() {
+		//@Configuration cached the bean created while @Componect create new instance on call.
+		return new DemoBean();
+	}
 
 	@Bean
 	//@Profile("dev")
@@ -25,6 +31,7 @@ public class MailConfig {
 	@Bean
 	@ConditionalOnProperty("spring.mail.host")
 	public SMTPMailSender smtpMailSender(JavaMailSender javaMailSender) {
+		demoBean();
 		return new SMTPMailSender(javaMailSender);
 	}
 }
